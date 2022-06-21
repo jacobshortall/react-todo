@@ -1,17 +1,39 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+function ToDoList(props) {
+    return props.items.map((item) => (
+        <div className="row justify-content-center mb-3">
+            <div className="col-6 p-2 bg-light rounded-1">
+                <span className="fs-5">{item}</span>
+            </div>
+        </div>
+    ));
+}
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+class ToDoApp extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            toDoItems: []
+        };
+    }
+
+    render() {
+        return (
+            <div className="container">
+                <div className="row justify-content-center mb-3 mt-2">
+                    <div className="col-6 text-center">
+                        <h1 className="text-light">To-Do</h1>
+                    </div>
+                </div>
+
+                <ToDoList items={this.state.toDoItems} />
+            </div>
+        );
+    }
+}
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<ToDoApp />);
