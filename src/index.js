@@ -22,7 +22,8 @@ class ToDoApp extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            toDoItems: ["test", "testing"]
+            toDoItems: [],
+            formValue: ""
         };
     }
 
@@ -34,6 +35,17 @@ class ToDoApp extends React.Component {
         e.target.classList.remove("clicked");
     }
 
+    handleSubmit = (e) => {
+        e.preventDefault();
+        const toDoItems = this.state.toDoItems.slice();
+        toDoItems.unshift(this.state.formValue);
+        this.setState({ toDoItems: toDoItems, formValue: "" });
+    };
+
+    handleInputChange = (e) => {
+        this.setState({ formValue: e.target.value });
+    };
+
     render() {
         return (
             <div className="container">
@@ -41,11 +53,17 @@ class ToDoApp extends React.Component {
                     <div className="col-6 text-center">
                         <h1 className="text-light fw-bold">To-Do</h1>
 
-                        <form className="d-flex justify-content-center">
+                        <form
+                            onSubmit={this.handleSubmit}
+                            className="d-flex justify-content-center"
+                        >
                             <input
                                 className="form-control w-75"
                                 placeholder="Add item"
                                 type="text"
+                                onChange={this.handleInputChange}
+                                value={this.state.formValue}
+                                name="toDoItem"
                             />
                             <button
                                 type="submit"
