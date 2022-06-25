@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 function ToDoList(props) {
     return props.items.map((item) => (
@@ -38,6 +40,20 @@ class ToDoApp extends React.Component {
                 <div className="row justify-content-center mb-3 mt-2">
                     <div className="col-6 text-center">
                         <h1 className="text-light fw-bold">To-Do</h1>
+
+                        <form className="d-flex justify-content-center">
+                            <input
+                                className="form-control w-75"
+                                placeholder="Add item"
+                                type="text"
+                            />
+                            <button
+                                type="submit"
+                                className="fs-3 text-success rounded ms-1"
+                            >
+                                <FontAwesomeIcon icon={faPlus} />
+                            </button>
+                        </form>
                     </div>
                 </div>
 
