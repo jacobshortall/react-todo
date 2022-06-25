@@ -6,13 +6,13 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 function ToDoList(props) {
     return props.items.map((item) => (
-        <div className="row justify-content-center mb-3">
+        <div key={item} className="row justify-content-center mb-3">
             <div
                 onClick={props.handleClick}
                 onAnimationEnd={props.handleAnimationEnd}
                 className="col-6 p-2 bg-light rounded-1 td-item"
             >
-                <span className="fs-5">{item}</span>
+                <span className="fs-5 td-text">{item}</span>
             </div>
         </div>
     ));
@@ -28,7 +28,11 @@ class ToDoApp extends React.Component {
     }
 
     handleClick(e) {
-        e.target.classList.add("clicked");
+        if (e.target.classList.contains("td-text")) {
+            e.target.parentElement.classList.add("clicked");
+        } else {
+            e.target.classList.add("clicked");
+        }
     }
 
     handleAnimationEnd(e) {
