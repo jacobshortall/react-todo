@@ -1,3 +1,27 @@
 * {
     box-sizing: border-box;
 }
+
+.td-item:hover {
+    cursor: pointer;
+}
+
+.clicked {
+    animation-duration: 0.2s;
+    animation-name: scale;
+    opacity: 0.9;
+}
+
+@keyframes scale {
+    from {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.03)
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
