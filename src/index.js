@@ -18,6 +18,36 @@ function ToDoList(props) {
     ));
 }
 
+function ToDoForm(props) {
+    return (
+        <div className="row justify-content-center mb-3 mt-2">
+            <div className="col-6 text-center">
+                <h1 className="text-light fw-bold">To-Do</h1>
+
+                <form
+                    onSubmit={props.handleSubmit}
+                    className="d-flex justify-content-center"
+                >
+                    <input
+                        className="form-control w-75"
+                        placeholder="Add item"
+                        type="text"
+                        onChange={props.handleInputChange}
+                        value={props.formValue}
+                        name="toDoItem"
+                    />
+                    <button
+                        type="submit"
+                        className="fs-3 text-success rounded ms-1"
+                    >
+                        <FontAwesomeIcon icon={faPlus} />
+                    </button>
+                </form>
+            </div>
+        </div>
+    );
+}
+
 class ToDoApp extends React.Component {
     constructor(props) {
         super(props);
@@ -27,17 +57,17 @@ class ToDoApp extends React.Component {
         };
     }
 
-    handleClick(e) {
+    handleClick = (e) => {
         if (e.target.classList.contains("td-text")) {
             e.target.parentElement.classList.add("clicked");
         } else {
             e.target.classList.add("clicked");
         }
-    }
+    };
 
-    handleAnimationEnd(e) {
+    handleAnimationEnd = (e) => {
         e.target.classList.remove("clicked");
-    }
+    };
 
     handleSubmit = (e) => {
         e.preventDefault();
@@ -53,31 +83,11 @@ class ToDoApp extends React.Component {
     render() {
         return (
             <div className="container">
-                <div className="row justify-content-center mb-3 mt-2">
-                    <div className="col-6 text-center">
-                        <h1 className="text-light fw-bold">To-Do</h1>
-
-                        <form
-                            onSubmit={this.handleSubmit}
-                            className="d-flex justify-content-center"
-                        >
-                            <input
-                                className="form-control w-75"
-                                placeholder="Add item"
-                                type="text"
-                                onChange={this.handleInputChange}
-                                value={this.state.formValue}
-                                name="toDoItem"
-                            />
-                            <button
-                                type="submit"
-                                className="fs-3 text-success rounded ms-1"
-                            >
-                                <FontAwesomeIcon icon={faPlus} />
-                            </button>
-                        </form>
-                    </div>
-                </div>
+                <ToDoForm
+                    handleSubmit={this.handleSubmit}
+                    handleInputChange={this.handleInputChange}
+                    formValue={this.state.formValue}
+                />
 
                 <ToDoList
                     items={this.state.toDoItems}
