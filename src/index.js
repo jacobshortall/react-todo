@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import checkLineThrough from "./check_linethrough";
 import "./index.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
@@ -61,21 +62,11 @@ class ToDoApp extends React.Component {
         if (e.target.classList.contains("td-text")) {
             const element = e.target.parentElement;
             element.classList.add("clicked");
-
-            if (element.style.textDecoration === "line-through") {
-                element.style.textDecoration = "";
-            } else {
-                element.style.textDecoration = "line-through";
-            }
+            checkLineThrough(element);
         } else {
             const element = e.target;
             element.classList.add("clicked");
-
-            if (element.style.textDecoration === "line-through") {
-                element.style.textDecoration = "";
-            } else {
-                element.style.textDecoration = "line-through";
-            }
+            checkLineThrough(element);
         }
     };
 
