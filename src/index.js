@@ -59,9 +59,11 @@ class ToDoApp extends React.Component {
 
     handleClick = (e) => {
         if (e.target.classList.contains("td-text")) {
-            e.target.parentElement.classList.add("clicked");
+            const element = e.target.parentElement;
+            element.classList.add("clicked");
         } else {
-            e.target.classList.add("clicked");
+            const element = e.target;
+            element.classList.add("clicked");
         }
     };
 
