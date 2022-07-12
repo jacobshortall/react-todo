@@ -61,9 +61,21 @@ class ToDoApp extends React.Component {
         if (e.target.classList.contains("td-text")) {
             const element = e.target.parentElement;
             element.classList.add("clicked");
+
+            if (element.style.textDecoration === "line-through") {
+                element.style.textDecoration = "";
+            } else {
+                element.style.textDecoration = "line-through";
+            }
         } else {
             const element = e.target;
             element.classList.add("clicked");
+
+            if (element.style.textDecoration === "line-through") {
+                element.style.textDecoration = "";
+            } else {
+                element.style.textDecoration = "line-through";
+            }
         }
     };
 
