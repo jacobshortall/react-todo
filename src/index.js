@@ -11,7 +11,7 @@ function ToDoList(props) {
             <div
                 onClick={props.handleClick}
                 onAnimationEnd={props.handleAnimationEnd}
-                className="col-6 p-2 bg-light rounded-1 td-item"
+                className="col-10 col-md-8 p-2 bg-light rounded-1 td-item"
             >
                 <span className="fs-5 td-text">{item}</span>
             </div>
@@ -21,29 +21,37 @@ function ToDoList(props) {
 
 function ToDoForm(props) {
     return (
-        <div className="row justify-content-center mb-3 mt-2">
-            <div className="col-6 text-center">
-                <h1 className="text-light fw-bold">To-Do</h1>
+        <div>
+            <div className="row justify-content-center mb-3 mt-2">
+                <div className="col-10 col-md-8 text-center">
+                    <h1 className="text-light fw-bold">To-Do</h1>
 
-                <form
-                    onSubmit={props.handleSubmit}
-                    className="d-flex justify-content-center"
-                >
-                    <input
-                        className="form-control w-75"
-                        placeholder="Add item"
-                        type="text"
-                        onChange={props.handleInputChange}
-                        value={props.formValue}
-                        name="toDoItem"
-                    />
-                    <button
-                        type="submit"
-                        className="fs-3 text-success rounded ms-1"
+                    <form
+                        onSubmit={props.handleSubmit}
+                        className="d-flex justify-content-center"
                     >
-                        <FontAwesomeIcon icon={faPlus} />
-                    </button>
-                </form>
+                        <input
+                            className="form-control"
+                            placeholder="Add item"
+                            type="text"
+                            onChange={props.handleInputChange}
+                            value={props.formValue}
+                            name="toDoItem"
+                        />
+                        <button
+                            type="submit"
+                            className="fs-3 text-success rounded ms-1"
+                        >
+                            <FontAwesomeIcon icon={faPlus} />
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div className="row justify-content-center" id="cont">
+                <div className="col-10 col-md-8 text-end">
+                    <p id="error">Invalid input.</p>
+                </div>
             </div>
         </div>
     );
@@ -76,8 +84,15 @@ class ToDoApp extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
+
+        const value = this.state.formValue;
+        if (!value) {
+            document.getElementById("cont").style.display = "flex";
+            return;
+        }
+
         const toDoItems = this.state.toDoItems.slice();
-        toDoItems.unshift(this.state.formValue);
+        toDoItems.unshift(value);
         this.setState({ toDoItems: toDoItems, formValue: "" });
     };
 
@@ -87,7 +102,7 @@ class ToDoApp extends React.Component {
 
     render() {
         return (
-            <div className="container">
+            <div className="container-fluid">
                 <ToDoForm
                     handleSubmit={this.handleSubmit}
                     handleInputChange={this.handleInputChange}

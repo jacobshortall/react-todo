@@ -57,3 +57,29 @@
 .text-success:hover>.fa-plus {
     color: #fff;
 }
+
+#cont {
+    position: absolute;
+    display: none;
+    width: 100%;
+}
+
+/* USE THIS TO CREATE TRIANGLE ON TOP OF ELEMENT */
+#error::before {
+    content: "";
+    width: 5px;
+    height: 5px;
+    background-color: blue;
+    position: absolute;
+}
+
+#error {
+    background-color: #a82c34;
+    padding: 10px;
+    display: inline;
+    border-radius: 5px;
+    margin-top: 15px;
+    color: #fff;
+    right: 175px;
+    bottom: 50px;
+}
