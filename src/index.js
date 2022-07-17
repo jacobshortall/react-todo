@@ -66,6 +66,7 @@ class ToDoApp extends React.Component {
         };
     }
 
+    // THIS COULD BE FEWER LINES - DEFINE element OUTSIDE OF STATEMENT
     handleClick = (e) => {
         if (e.target.classList.contains("td-text")) {
             const element = e.target.parentElement;
