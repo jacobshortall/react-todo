@@ -4,6 +4,7 @@
 
 .td-item {
     z-index: 1;
+    word-wrap: break-word;
 }
 
 .td-item:hover {
@@ -51,6 +52,7 @@
 .text-success {
     background-color: transparent;
     border: 1px solid #018735;
+    transition: all 200ms ease;
 }
 
 .text-success:hover {
@@ -58,8 +60,13 @@
     background-color: #018735;
 }
 
+.text-success>.fa-plus {
+    transition-duration: 0.2s;
+}
+
 .text-success:hover>.fa-plus {
     color: #fff;
+    transition: all 200ms ease;
 }
 
 #cont {

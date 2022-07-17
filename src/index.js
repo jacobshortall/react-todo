@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import checkLineThrough from "./check_linethrough";
+import Error from "./error.js";
 import "./index.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
@@ -48,13 +49,7 @@ function ToDoForm(props) {
                 </div>
             </div>
 
-            <div className="row mt-1 justify-content-center" id="cont">
-                <div className="col-10 col-md-8 col-lg-6">
-                    <p id="error" className="shadow-sm">
-                        Invalid input!
-                    </p>
-                </div>
-            </div>
+            <Error />
         </div>
     );
 }
@@ -87,7 +82,7 @@ class ToDoApp extends React.Component {
         e.preventDefault();
 
         const value = this.state.formValue;
-        if (!value) {
+        if (!value.trim()) {
             document.getElementById("cont").style.opacity = "1";
             setTimeout(() => {
                 document.getElementById("cont").style.opacity = "0";
