@@ -11,7 +11,7 @@ function ToDoList(props) {
             <div
                 onClick={props.handleClick}
                 onAnimationEnd={props.handleAnimationEnd}
-                className="col-10 col-md-8 p-2 bg-light rounded-1 td-item"
+                className="col-10 col-md-8 col-lg-6 p-2 bg-light rounded-1 td-item"
             >
                 <span className="fs-5 td-text">{item}</span>
             </div>
@@ -23,7 +23,7 @@ function ToDoForm(props) {
     return (
         <div>
             <div className="row justify-content-center mb-3 mt-2">
-                <div className="col-10 col-md-8 text-center">
+                <div className="col-10 col-md-8 col-lg-6 text-center">
                     <h1 className="text-light fw-bold">To-Do</h1>
 
                     <form
@@ -49,7 +49,7 @@ function ToDoForm(props) {
             </div>
 
             <div className="row mt-1 justify-content-center" id="cont">
-                <div className="col-10 col-md-8">
+                <div className="col-10 col-md-8 col-lg-6">
                     <p id="error" className="shadow-sm">
                         Invalid input!
                     </p>
