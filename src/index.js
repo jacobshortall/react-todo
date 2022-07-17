@@ -68,17 +68,15 @@ class ToDoApp extends React.Component {
         };
     }
 
-    // THIS COULD BE FEWER LINES - DEFINE element OUTSIDE OF STATEMENT
     handleClick = (e) => {
+        let element;
         if (e.target.classList.contains("td-text")) {
-            const element = e.target.parentElement;
-            element.classList.add("clicked");
-            checkLineThrough(element);
+            element = e.target.parentElement;
         } else {
-            const element = e.target;
-            element.classList.add("clicked");
-            checkLineThrough(element);
+            element = e.target;
         }
+        element.classList.add("clicked");
+        checkLineThrough(element);
     };
 
     handleAnimationEnd = (e) => {
