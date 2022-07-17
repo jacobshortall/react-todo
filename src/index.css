@@ -64,18 +64,20 @@
 
 #cont {
     position: absolute;
-    display: none;
+    opacity: 0;
     width: 100%;
     z-index: 100;
+    transition: opacity 0.5s ease-in-out;
 }
 
-/* USE THIS TO CREATE TRIANGLE ON TOP OF ELEMENT */
 #error::before {
     content: "";
-    width: 5px;
-    height: 5px;
-    background-color: blue;
+    width: 0;
+    height: 0;
     position: absolute;
+    bottom: 130%;
+    border: 10px solid transparent;
+    border-bottom-color: #a82c34;
 }
 
 #error {
@@ -83,8 +85,5 @@
     padding: 10px;
     display: inline;
     border-radius: 5px;
-    margin-top: 15px;
     color: #fff;
-    right: 175px;
-    bottom: 50px;
 }

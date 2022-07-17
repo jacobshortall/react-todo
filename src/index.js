@@ -48,9 +48,11 @@ function ToDoForm(props) {
                 </div>
             </div>
 
-            <div className="row justify-content-center" id="cont">
-                <div className="col-10 col-md-8 text-end">
-                    <p id="error">Invalid input.</p>
+            <div className="row mt-1 justify-content-center" id="cont">
+                <div className="col-10 col-md-8">
+                    <p id="error" className="shadow-sm">
+                        Invalid input!
+                    </p>
                 </div>
             </div>
         </div>
@@ -88,7 +90,10 @@ class ToDoApp extends React.Component {
 
         const value = this.state.formValue;
         if (!value) {
-            document.getElementById("cont").style.display = "flex";
+            document.getElementById("cont").style.opacity = "1";
+            setTimeout(() => {
+                document.getElementById("cont").style.opacity = "0";
+            }, 2000);
             return;
         }
 
