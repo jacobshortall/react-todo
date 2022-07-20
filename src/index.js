@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import checkLineThrough from "./check_linethrough";
-import Error from "./error.js";
+import { Error, displayError } from "./error.js";
 import "./index.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
@@ -81,16 +81,17 @@ class ToDoApp extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault();
 
+        const toDoItems = this.state.toDoItems.slice();
         const value = this.state.formValue;
+
         if (!value.trim()) {
-            document.getElementById("cont").style.opacity = "1";
-            setTimeout(() => {
-                document.getElementById("cont").style.opacity = "0";
-            }, 2000);
+            displayError("Invalid input!");
+            return;
+        } else if (toDoItems.includes(value)) {
+            displayError("Already exists");
             return;
         }
 
-        const toDoItems = this.state.toDoItems.slice();
         toDoItems.unshift(value);
         this.setState({ toDoItems: toDoItems, formValue: "" });
     };
